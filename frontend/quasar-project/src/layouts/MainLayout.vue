@@ -88,13 +88,13 @@ const linksList = [
     title: 'Registracija',
     caption: 'Registracija',
     icon: 'man',
-    link: '#/Prijava'
+    link: '#/Registracija'
   },
   {
     title: 'Prijava',
     caption: 'Prijava',
     icon: 'login',
-    link: '#/Registracija'
+    link: '#/Prijava'
   }
 ]
 
