@@ -14,11 +14,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const connection = mysql.createConnection({
   host: "ucka.veleri.hr",
-  user: "rprebeg,
+  user: "rprebeg",
   password: "11",
   database: "rprebeg",
 });
 
+// biome-ignore lint/complexity/useArrowFunction: <explanation>
 connection.connect(function (err) {
   if (err) {
     console.error("Greška prilikom spajanja na bazu:", err);
@@ -64,9 +65,7 @@ app.get("/api/knjige/autor/:autor", (req, res) => {
 
 
 app.get("/api/slob_knjige", (req, res) => {
-  const query = `
-  SELECT 
-  (knjiga.stanje - COUNT(rezervacija.knjiga_id)) AS slobodne, 
+  const query = `SELECT (knjiga.stanje - COUNT(rezervacija.knjiga_id)) AS slobodne, 
   knjiga.id, knjiga.naslov, knjiga.stanje 
   FROM knjiga 
   LEFT JOIN rezervacija ON knjiga.id = rezervacija.knjiga_id 

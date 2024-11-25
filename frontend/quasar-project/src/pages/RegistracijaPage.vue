@@ -1,88 +1,54 @@
 <template>
   <q-page padding>
-    <!-- Naslov i popratni tekst -->
-    <div class="text-center q-mb-md">
-      <h1>Registracija</h1>
-      <p>Unesite svoje podatke kako biste se registrirali u sustav.</p>
+    <h1>Registracija</h1>
+    <p>Ispunite donja polja za registraciju.</p>
+
+    <q-input v-model="userData.username" label="Korisničko ime" />
+    <q-input v-model="userData.email" label="Email" type="email" />
+    <q-input v-model="userData.password" label="Lozinka" type="password" />
+    <q-input v-model="userData.confirmPassword" label="Potvrdi lozinku" type="password" />
+
+    <q-btn label="Potvrdi" @click="registerUser" color="primary" />
+
+
+    <div v-if="registrationSuccess" class="text-positive text-h6 q-mt-md">
+      Registracija uspjesna!
     </div>
-
-    <!-- Formu za registraciju -->
-    <q-form @submit="submitForm">
-      <q-input
-        v-model="formData.ime"
-        label="Ime"
-        filled
-        required
-      />
-      <q-input
-        v-model="formData.prezime"
-        label="Prezime"
-        filled
-        required
-      />
-      <q-input
-        v-model="formData.korisnickoIme"
-        label="Korisničko ime"
-        filled
-        required
-      />
-      <q-input
-        v-model="formData.email"
-        label="Email"
-        filled
-        type="email"
-        required
-      />
-      <q-input
-        v-model="formData.lozinka"
-        label="Lozinka"
-        filled
-        type="password"
-        required
-      />
-
-      <q-btn label="Potvrdi" type="submit" color="primary" class="full-width q-mt-md" />
-    </q-form>
   </q-page>
 </template>
 
 <script>
 export default {
-  setup() {
-    // Početni podaci za formu
-    const formData = {
-      ime: '',
-      prezime: '',
-      korisnickoIme: '',
-      email: '',
-      lozinka: ''
-    };
-
-    // Funkcija za slanje forme
-    const submitForm = () => {
-      // Ovdje ide kod za spremanje podataka, npr. API poziv
-      console.log('Podaci su poslani:', formData);
-      // Nakon slanja možeš očistiti formu ili prikazati obavijest
-    };
-
+  data() {
     return {
-      formData,
-      submitForm
+      userData: {
+        username: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
+      },
+      registrationSuccess: false
     };
+  },
+  methods: {
+    registerUser() {
+
+      if (this.userData.username && this.userData.email && this.userData.password && this.userData.password === this.userData.confirmPassword) {
+
+        this.registrationSuccess = true;
+
+
+        this.userData = {
+          username: '',
+          email: '',
+          password: '',
+          confirmPassword: ''
+        };
+      } else {
+
+        alert("Provjerite unesene podatke.");
+      }
+    }
   }
 };
 </script>
-
-<style scoped>
-.text-center {
-  text-align: center;
-}
-
-.q-mb-md {
-  margin-bottom: 20px;
-}
-
-.q-btn {
-  width: 100%;
-}
-</style>
