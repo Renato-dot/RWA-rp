@@ -3,8 +3,8 @@
     <!-- content -->
   </q-page>
   <q-card-section>
-    <q-img src=" knjiznica.jpg ">
-    <div class="text-h3 text-weight-bolder absolute-bottom text-center">O 
+    <q-img src= "knjiznica.jpg">
+    <div class="text-h3 text-weight-bolder absolute-bottom text-center">O
     nama</div>
     </q-img>
   </q-card-section>
