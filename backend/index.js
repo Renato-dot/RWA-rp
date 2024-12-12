@@ -16,7 +16,7 @@ const connection = mysql.createConnection({
   host: "ucka.veleri.hr",
   user: "rprebeg",
   password: "11",
-  database: "rprebeg",
+  database: "rprebeg"
 });
 
 // biome-ignore lint/complexity/useArrowFunction: <explanation>
@@ -78,7 +78,7 @@ app.get("/api/slob_knjige/:id_knjige", (req, res) => {
 });
 
 app.get("/api/rezerv_knjige", (req, res) => {
-  const query = `SELECT * FROM knjiga, rezervacija WHERE knjiga.id = rezervacija.knjiga_id`;
+  const query = `SELECT * FROM knjiga INNER JOIN rezervacija ON knjiga.id = rezervacija.knjiga`;
   connection.query(query, (error, results) => {
     if (error) throw error;
     res.send(results);

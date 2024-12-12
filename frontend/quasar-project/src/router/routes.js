@@ -9,7 +9,9 @@ const routes = [
       { path: '/ONama', component: () => import('pages/ONamaPage.vue') },
       { path: '/Lokacije', component: () => import('pages/LokacijePage.vue') },
       { path: '/Prijava', component: () => import('pages/PrijavaPage.vue') },
-      { path: '/Registracija', component: () => import('pages/RegistracijaPage.vue') }
+      { path: '/Registracija', component: () => import('pages/RegistracijaPage.vue') },
+      { path: '/PopisKnjigaBaza', component: () => import('pages/PopisKnjigaBazaPage.vue') },
+      { path: '/Rezervacije', component: () => import('pages/RezervacijePage.vue') }
 
     ]
   },
