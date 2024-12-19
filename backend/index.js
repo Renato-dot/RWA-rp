@@ -39,6 +39,7 @@ app.get("/api/knjige", (req, res) => {
 });
 
 
+
 app.get("/api/knjige/naslov/:naslov", (req, res) => {
   const naslov = `%${req.params.naslov}%`;
   connection.query( "SELECT * FROM knjiga WHERE naslov LIKE ?", [naslov],
@@ -279,6 +280,19 @@ app.put("/api/izmj_kor/:korisnik_id", (req, res) => {
       res.json({ message: "Podaci korisnika su ažurirani" });
     }
   );
+});
+
+app.post("/api/unos_knjige", (req, res) => {
+  const data = req.body
+  knjiga = [[data.naslov, data.autor, data.opis, data.slika, data.stanje]]
+  connection.query("INSERT INTO knjiga ( naslov, autor, opis, slika, stanje) VALUES ?",
+    [knjiga], (error, results) => {
+      if (error) throw error;
+      res.send(results);
+
+    });
+
+
 });
 
 

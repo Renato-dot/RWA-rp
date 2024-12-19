@@ -126,8 +126,8 @@ const columns = [
   },
   {
     name: 'datum_rezervacije',
-    label: 'datum_rez',
-    field: 'datum_rezervacije',
+    label: 'datum_rezervacije',
+    field: 'datum_rez',
     align:'center',
     style: style1,
     headerStyle: style2

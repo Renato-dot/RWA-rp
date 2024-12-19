@@ -15,6 +15,20 @@ const routes = [
 
     ]
   },
+  {
+    path: '/admin',
+    component: () => import('layouts/AdminLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/AdminPage.vue') },
+      { path: '/admin/PopisKnjiga', component: () => import('pages/PopisKnjigaPage.vue') },
+      { path: '/admin/Pretrazivanje', component: () => import('pages/PretrazivanjePage.vue') },
+      { path: '/admin/Popis_korisnika', component: () => import('pages/Popis_korisnikaPage.vue') },
+      { path: '/admin/Unos_knjiga', component: () => import('pages/Unos_knjigaPage.vue') },
+      { path: '/admin/logout', component: () => import('pages/LogoutPage.vue') },
+      { path: '/admin/PopisKnjigaBaza', component: () => import('pages/PopisKnjigaBazaPage.vue') }
+
+    ]
+  },
 
   // Always leave this as last one,
   // but you can also remove it
